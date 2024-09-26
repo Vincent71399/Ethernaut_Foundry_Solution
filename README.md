@@ -5,7 +5,8 @@
     export ETHERSCAN_API_KEY=xxxxxx
 ```
 
-2. run
+2. in Ubuntu/Linux system (if you are using windows system, you need to install linux, https://learn.microsoft.com/en-us/windows/wsl/install)
+<br/> run following command to install all necessary libraries
 ```javascript
     make install_libs
 ```
