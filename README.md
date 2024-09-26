@@ -21,3 +21,17 @@ if success, you can view it by running
     make list_wallets
 ```
 you should see "sepoliaKey (Local)"
+
+4. after start the puzzle in Ethernaut, run the following with input of the level contract address to solve them, then submit the level in Ethernaut page
+```javascript
+    make solve_1
+    make solve_2
+    ...
+```
+
+5. for solutions with attacker contract, run deploy attack script before run the solve script
+```javascript
+    make deploy_attacker_3
+    make solve_3
+    ...
+```

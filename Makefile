@@ -29,6 +29,7 @@ deploy_attacker_3 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_3; \
 	forge script script/3/DeployCoinFlipAttacker.s.sol --sig "run(address)" $$puzzle_address_3 --verify --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
 
+# need to run 10 times, alternatively you can use solve_3_consecutive in one shot
 solve_3 :;
 	forge script script/3/CoinFlipSolution.s.sol --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
 
@@ -52,6 +53,15 @@ solve_3_consecutive :
 	$(MAKE) solve_step_3; \
 	$(MAKE) delay; \
 	$(MAKE) solve_step_3
+
+deploy_attacker_4 :;
+	@read -p "Enter Puzzle address (0x...): " puzzle_address_4; \
+	forge script script/4/DeployTelephoneAttacker.s.sol --sig "run(address)" $$puzzle_address_4 --verify --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
+
+# need to run 10 times, alternatively you can use solve_3_consecutive in one shot
+solve_4 :;
+	forge script script/4/TelephoneSolution.s.sol --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
+
 
 # steps
 solve_step_3 :;

