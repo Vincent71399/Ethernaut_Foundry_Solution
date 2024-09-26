@@ -12,14 +12,10 @@ contract FalloutTest is Test {
     address owner = makeAddr("owner");
     address player = makeAddr("player");
 
-    uint256 constant STARTING_USER_BALANCE = 100 ether;
-
     function setUp() public {
         vm.startPrank(owner);
         puzzleContract = new Fallout();
         vm.stopPrank();
-
-        vm.deal(player, STARTING_USER_BALANCE);
     }
 
     function testSolveFallout() public {

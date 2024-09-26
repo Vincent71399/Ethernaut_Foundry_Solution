@@ -58,9 +58,12 @@ deploy_attacker_4 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_4; \
 	forge script script/4/DeployTelephoneAttacker.s.sol --sig "run(address)" $$puzzle_address_4 --verify --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
 
-# need to run 10 times, alternatively you can use solve_3_consecutive in one shot
 solve_4 :;
 	forge script script/4/TelephoneSolution.s.sol --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
+
+solve_5 :;
+	@read -p "Enter Puzzle address (0x...): " puzzle_address_5; \
+	forge script script/5/TokenSolution.s.sol --sig "run(address)" $$puzzle_address_5 --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --sender $$WALLET_PUBLIC_ADDRESS --broadcast -vvv
 
 
 # steps

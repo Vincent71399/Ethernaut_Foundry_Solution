@@ -11,15 +11,12 @@ contract CoinFlipTest is Test {
     address owner = makeAddr("owner");
     address player = makeAddr("player");
 
-    uint256 constant STARTING_USER_BALANCE = 100 ether;
     uint256 constant FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;
 
     function setUp() public {
         vm.startPrank(owner);
         puzzleContract = new CoinFlip();
         vm.stopPrank();
-
-        vm.deal(player, STARTING_USER_BALANCE);
     }
 
     function testSolveCoinFlip() public {

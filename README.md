@@ -3,6 +3,7 @@
 ```javascript
     export SEPOLIA_RPC_URL=https://xxxxxx
     export ETHERSCAN_API_KEY=xxxxxx
+    export WALLET_PUBLIC_ADDRESS=0xXXXXX...XXXX
 ```
 
 2. in Ubuntu/Linux system (if you are using windows system, you need to install linux, https://learn.microsoft.com/en-us/windows/wsl/install)
