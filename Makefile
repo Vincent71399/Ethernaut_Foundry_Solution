@@ -69,6 +69,13 @@ solve_6 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_6; \
 	forge script script/6/DelegateSolution.s.sol --sig "run(address)" $$puzzle_address_6 --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
 
+deploy_attacker_7 :;
+	forge script script/7/DeployForceAttacker.s.sol --verify --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
+
+solve_7 :;
+	@read -p "Enter Puzzle address (0x...): " puzzle_address_7; \
+	forge script script/7/ForceSolution.s.sol --sig "run(address)" $$puzzle_address_7 --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
+
 solve_8 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_8; \
 	password=$$(cast storage $$puzzle_address_8 1 --rpc-url $$SEPOLIA_RPC_URL); \
