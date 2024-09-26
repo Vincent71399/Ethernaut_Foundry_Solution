@@ -65,6 +65,10 @@ solve_5 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_5; \
 	forge script script/5/TokenSolution.s.sol --sig "run(address)" $$puzzle_address_5 --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --sender $$WALLET_PUBLIC_ADDRESS --broadcast -vvv
 
+solve_6 :;
+	@read -p "Enter Puzzle address (0x...): " puzzle_address_6; \
+	forge script script/6/DelegateSolution.s.sol --sig "run(address)" $$puzzle_address_6 --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
+
 
 # steps
 solve_step_3 :;
