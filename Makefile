@@ -14,7 +14,7 @@ install_foundry :; forge install foundry-rs/forge-std --no-commit
 
 install_openzeppelin@3.3.0 :; forge install openzeppelin-contracts@v3.3.0=openzeppelin/openzeppelin-contracts@v3.3.0 --no-commit
 
-install_foundry-devops :; forge install cyfrin/foundry-devops@0.2.2 --no-commit
+install_foundry-devops :; forge install cyfrin/foundry-devops --no-commit
 
 # solutions
 solve_1 :;
