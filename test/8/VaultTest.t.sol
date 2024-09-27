@@ -14,8 +14,8 @@ contract VaultTest is Test {
     }
 
     function testSolveVault() public view {
-        bytes32 slot0 = vm.load(address(puzzleContract), bytes32(uint256(1)));
-        console.log("Slot 0: ", uint256(slot0));
-        assertEq(slot0, secret);
+        bytes32 slot1 = vm.load(address(puzzleContract), bytes32(uint256(1)));
+        console.log("Slot 1: ", uint256(slot1));
+        assertEq(slot1, secret);
     }
 }

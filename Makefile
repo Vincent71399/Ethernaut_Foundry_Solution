@@ -103,6 +103,11 @@ deploy_attacker_11 :;
 solve_11 :;
 	forge script script/11/ElevatorSolution.s.sol --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
 
+solve_12 :;
+	@read -p "Enter Puzzle address (0x...): " puzzle_address_12; \
+	key=$$(cast storage $$puzzle_address_12 5 --rpc-url $$SEPOLIA_RPC_URL); \
+	forge script script/12/PrivacySolution.s.sol --sig "run(address,bytes32)" $$puzzle_address_12 $$key --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
+
 # steps
 solve_step_3 :;
 	forge script script/3/CoinFlipSolution.s.sol --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
