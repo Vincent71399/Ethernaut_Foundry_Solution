@@ -96,6 +96,13 @@ solve_10 :;
 	@read -p "Enter Attacker address (0x...): " attacker_address_10; \
 	forge script script/10/ReentrancySolution.s.sol --sig "run(address)" $$attacker_address_10 --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
 
+deploy_attacker_11 :;
+	@read -p "Enter Puzzle address (0x...): " puzzle_address_11; \
+	forge script script/11/DeployElevatorAttacker.s.sol --sig "run(address)" $$puzzle_address_11 --verify --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
+
+solve_11 :;
+	forge script script/11/ElevatorSolution.s.sol --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
+
 # steps
 solve_step_3 :;
 	forge script script/3/CoinFlipSolution.s.sol --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv

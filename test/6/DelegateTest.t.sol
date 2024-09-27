@@ -2,8 +2,7 @@
 pragma solidity ^0.8.0;
 
 import {Test, console} from "forge-std/Test.sol";
-import {Delegate, Delegation} from "../src/puzzles/6/Delegate.sol";
-
+import {Delegate, Delegation} from "../../src/puzzles/6/Delegate.sol";
 
 contract DelegateTest is Test {
     Delegate internal delegateContract;

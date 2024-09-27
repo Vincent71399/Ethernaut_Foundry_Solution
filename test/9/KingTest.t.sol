@@ -2,8 +2,8 @@
 pragma solidity ^0.8.0;
 
 import {Test, console} from "forge-std/Test.sol";
-import {King} from "../src/puzzles/9/King.sol";
-import {KingAttacker} from "../src/attackers/9/KingAttacker.sol";
+import {King} from "../../src/puzzles/9/King.sol";
+import {KingAttacker} from "../../src/attackers/9/KingAttacker.sol";
 
 contract KingTest is Test {
     King internal puzzleContract;

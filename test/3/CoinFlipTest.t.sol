@@ -2,8 +2,8 @@
 pragma solidity ^0.8.0;
 
 import {Test, console} from "forge-std/Test.sol";
-import {CoinFlip} from "../src/puzzles/3/CoinFlip.sol";
-import {CoinFlipAttacker} from "../src/attackers/3/CoinFlipAttacker.sol";
+import {CoinFlip} from "../../src/puzzles/3/CoinFlip.sol";
+import {CoinFlipAttacker} from "../../src/attackers/3/CoinFlipAttacker.sol";
 
 contract CoinFlipTest is Test {
     CoinFlip internal puzzleContract;

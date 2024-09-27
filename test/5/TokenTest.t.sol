@@ -4,7 +4,7 @@ pragma solidity ^0.6.0;
 pragma experimental ABIEncoderV2;
 
 import {Test, console} from "forge-std/Test.sol";
-import {Token} from "../src/puzzles/5/Token.sol";
+import {Token} from "../../src/puzzles/5/Token.sol";
 
 
 contract TokenTest is Test {

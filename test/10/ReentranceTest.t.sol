@@ -4,8 +4,8 @@ pragma solidity ^0.6.12;
 pragma experimental ABIEncoderV2;
 
 import {Test, console} from "forge-std/Test.sol";
-import {Reentrance} from "../src/puzzles/10/Reentrance.sol";
-import {ReentrancyAttacker} from "../src/attackers/10/ReentrancyAttacker.sol";
+import {Reentrance} from "../../src/puzzles/10/Reentrance.sol";
+import {ReentrancyAttacker} from "../../src/attackers/10/ReentrancyAttacker.sol";
 
 contract ReentranceTest is Test {
     Reentrance internal puzzleContract;

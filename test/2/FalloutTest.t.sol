@@ -4,7 +4,7 @@ pragma solidity ^0.6.0;
 pragma experimental ABIEncoderV2;
 
 import {Test} from "forge-std/Test.sol";
-import {Fallout} from "../src/puzzles/2/Fallout.sol";
+import {Fallout} from "../../src/puzzles/2/Fallout.sol";
 
 contract FalloutTest is Test {
     Fallout internal puzzleContract;

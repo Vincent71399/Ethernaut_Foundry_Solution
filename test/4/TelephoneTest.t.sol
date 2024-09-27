@@ -2,8 +2,8 @@
 pragma solidity ^0.8.0;
 
 import {Test, console} from "forge-std/Test.sol";
-import {Telephone} from "../src/puzzles/4/Telephone.sol";
-import {TelephoneAttacker} from "../src/attackers/4/TelephoneAttacker.sol";
+import {Telephone} from "../../src/puzzles/4/Telephone.sol";
+import {TelephoneAttacker} from "../../src/attackers/4/TelephoneAttacker.sol";
 
 contract TelephoneTest is Test {
     Telephone internal puzzleContract;
