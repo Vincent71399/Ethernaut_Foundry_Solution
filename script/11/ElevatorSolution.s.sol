@@ -8,7 +8,7 @@ import {ElevatorAttacker} from "../../src/attackers/11/ElevatorAttacker.sol";
 contract ElevatorSolution is Script {
     function run() external {
         address mostRecentlyDeployedElevatorAttacker = DevOpsTools.get_most_recent_deployment("ElevatorAttacker", block.chainid);
-        console.log("KingAttacker address: ");
+        console.log("ElevatorAttacker address: ");
         console.logAddress(mostRecentlyDeployedElevatorAttacker);
         ElevatorAttacker attacker = ElevatorAttacker(mostRecentlyDeployedElevatorAttacker);
 

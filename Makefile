@@ -108,6 +108,13 @@ solve_12 :;
 	key=$$(cast storage $$puzzle_address_12 5 --rpc-url $$SEPOLIA_RPC_URL); \
 	forge script script/12/PrivacySolution.s.sol --sig "run(address,bytes32)" $$puzzle_address_12 $$key --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
 
+deploy_attacker_13 :;
+	@read -p "Enter Puzzle address (0x...): " puzzle_address_13; \
+	forge script script/13/DeployGateKeeperOneAttacker.s.sol --sig "run(address)" $$puzzle_address_13 --verify --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
+
+solve_13 :;
+	forge script script/13/GateKeeperOneSolution.s.sol --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
+
 # steps
 solve_step_3 :;
 	forge script script/3/CoinFlipSolution.s.sol --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
