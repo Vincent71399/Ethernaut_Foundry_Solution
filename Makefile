@@ -121,6 +121,10 @@ solve_14 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_14; \
 	forge script script/14/GateKeeperTwoSolution.s.sol --sig "run(address)" $$puzzle_address_14 --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
 
+solve_15 :;
+	@read -p "Enter Puzzle address (0x...): " puzzle_address_15; \
+	forge script script/15/NaughtCoinSolution.s.sol --sig "run(address)" $$puzzle_address_15 --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --sender $$WALLET_PUBLIC_ADDRESS --broadcast -vvv
+
 # steps
 solve_step_3 :;
 	forge script script/3/CoinFlipSolution.s.sol --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
