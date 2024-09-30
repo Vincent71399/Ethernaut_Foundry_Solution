@@ -115,6 +115,10 @@ deploy_attacker_13 :;
 solve_13 :;
 	forge script script/13/GateKeeperOneSolution.s.sol --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
 
+solve_14 :;
+	@read -p "Enter Puzzle address (0x...): " puzzle_address_14; \
+	forge script script/14/GateKeeperTwoSolution.s.sol --sig "run(address)" $$puzzle_address_14 --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
+
 # steps
 solve_step_3 :;
 	forge script script/3/CoinFlipSolution.s.sol --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
