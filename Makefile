@@ -132,6 +132,16 @@ solve_16 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_16; \
 	forge script script/16/PreservationSolution.s.sol --sig "run(address)" $$puzzle_address_16 --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --sender $$WALLET_PUBLIC_ADDRESS --broadcast -vvv
 
+# for puzzle 17 read json response
+install_jq :;
+	sudo apt-get update && sudo apt-get install -y jq
+
+solve_17 :;
+	@read -p "Enter Puzzle address (0x...): " puzzle_address_17; \
+	result=$$(curl -s "https://api-sepolia.etherscan.io/api?module=account&action=txlistinternal&address=$$puzzle_address_17&apikey=$$ETHERSCAN_API_KEY"); \
+	contractAddress=$$(echo $$result | jq '.result[1].contractAddress'); \
+	echo "Contract Address: $$contractAddress"; \
+
 # steps
 solve_step_3 :;
 	forge script script/3/CoinFlipSolution.s.sol --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
