@@ -140,7 +140,8 @@ solve_17 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_17; \
 	result=$$(curl -s "https://api-sepolia.etherscan.io/api?module=account&action=txlistinternal&address=$$puzzle_address_17&apikey=$$ETHERSCAN_API_KEY"); \
 	contractAddress=$$(echo $$result | jq '.result[1].contractAddress'); \
-	echo "Contract Address: $$contractAddress"; \
+	contractAddress=$$(echo $$contractAddress | tr -d '"'); \
+	forge script script/17/RecoverySolution.s.sol --sig "run(address)" $$contractAddress --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --sender $$WALLET_PUBLIC_ADDRESS --broadcast -vvv
 
 # steps
 solve_step_3 :;
