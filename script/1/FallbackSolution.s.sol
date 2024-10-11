@@ -7,8 +7,8 @@ import { Fallback } from "@puzzles/1/Fallback.sol";
 contract FallbackSolution is Script {
     error Fallback_CallFailed();
 
-    function run(address payable target) public {
-        Fallback puzzleContract = Fallback(target);
+    function run(address target) public {
+        Fallback puzzleContract = Fallback(payable(target));
 
         vm.startBroadcast();
         puzzleContract.contribute{value: 1}();

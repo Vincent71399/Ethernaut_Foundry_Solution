@@ -30,7 +30,7 @@ contract DelegateTest is Test {
 
     function testDelegateSolution() public {
         DelegateSolution solution = new DelegateSolution();
-        solution.run(payable(address(puzzleContract)));
+        solution.run(address(puzzleContract));
         assertEq(puzzleContract.owner(), player);
     }
 }

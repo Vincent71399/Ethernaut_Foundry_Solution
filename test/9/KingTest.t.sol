@@ -4,13 +4,16 @@ pragma solidity ^0.8.0;
 import {Test, console} from "forge-std/Test.sol";
 import {King} from "../../src/puzzles/9/King.sol";
 import {KingAttacker} from "../../src/attackers/9/KingAttacker.sol";
+import {KingSolution} from "../../script/9/KingSolution.s.sol";
+import {DeployKingAttacker} from "../../script/9/DeployKingAttacker.s.sol";
+
 
 contract KingTest is Test {
     King internal puzzleContract;
     KingAttacker internal attackerContract;
 
     address owner = makeAddr("owner");
-    address player = makeAddr("player");
+    address player = msg.sender;
 
     uint256 constant STARTING_USER_BALANCE = 100;
     uint256 constant STARTING_CONTRACT_BALANCE = 87;
@@ -32,6 +35,21 @@ contract KingTest is Test {
         attackerContract.attack{value: prize}(address(puzzleContract));
         vm.stopPrank();
         assertEq(puzzleContract._king(), address(attackerContract));
+        assertEq(owner.balance, STARTING_USER_BALANCE);
+
+        vm.prank(owner);
+        (bool success, ) = address(puzzleContract).call{value: prize + 1}("");
+        assertEq(success, false);
+    }
+
+    function testKingSolution() public {
+        uint256 prize = puzzleContract.prize();
+
+        KingAttacker attacker = new DeployKingAttacker().run();
+        KingSolution solution = new KingSolution();
+        solution.solve(address(puzzleContract), address(attacker));
+
+        assertEq(puzzleContract._king(), address(attacker));
         assertEq(owner.balance, STARTING_USER_BALANCE);
 
         vm.prank(owner);

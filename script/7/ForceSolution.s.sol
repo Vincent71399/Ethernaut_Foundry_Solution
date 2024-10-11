@@ -10,7 +10,11 @@ contract ForceSolution is Script {
         address mostRecentlyDeployedForceAttacker = DevOpsTools.get_most_recent_deployment("ForceAttacker", block.chainid);
         console.log("ForceAttacker address: ");
         console.logAddress(mostRecentlyDeployedForceAttacker);
-        ForceAttacker forceAttacker = ForceAttacker(mostRecentlyDeployedForceAttacker);
+        solve(target, mostRecentlyDeployedForceAttacker);
+    }
+
+    function solve(address target, address attacker) public {
+        ForceAttacker forceAttacker = ForceAttacker(attacker);
         vm.startBroadcast();
         forceAttacker.attack{value: 1}(target);
         vm.stopBroadcast();

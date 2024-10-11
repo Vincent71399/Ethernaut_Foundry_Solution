@@ -35,7 +35,7 @@ contract FallbackTest is Test {
 
     function testFallbackSolution() public {
         FallbackSolution solution = new FallbackSolution();
-        solution.run(payable(address(puzzleContract)));
+        solution.run(address(puzzleContract));
         assertEq(puzzleContract.owner(), player);
         assertEq(address(puzzleContract).balance, 0);
     }
