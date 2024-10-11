@@ -5,12 +5,13 @@ pragma experimental ABIEncoderV2;
 
 import {Test, console} from "forge-std/Test.sol";
 import {Token} from "../../src/puzzles/5/Token.sol";
+import {TokenSolution} from "../../script/5/TokenSolution.s.sol";
 
 
 contract TokenTest is Test {
     Token internal puzzleContract;
 
-    address player = makeAddr("player");
+    address player = msg.sender;
     address receiver = makeAddr("receiver");
 
     uint256 constant INITIAL_SUPPLY = 20;
@@ -30,5 +31,11 @@ contract TokenTest is Test {
         assert(puzzleContract.balanceOf(player) > INITIAL_SUPPLY);
         console.log("Balance of player: ", puzzleContract.balanceOf(player));
         console.log("Balance of recevier: ", puzzleContract.balanceOf(receiver));
+    }
+
+    function testTokenSolution() public {
+        TokenSolution solution = new TokenSolution();
+        solution.solve(address(puzzleContract), player);
+        assert(puzzleContract.balanceOf(player) > INITIAL_SUPPLY);
     }
 }

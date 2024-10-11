@@ -3,13 +3,14 @@ pragma solidity ^0.8.0;
 
 import {Test, console} from "forge-std/Test.sol";
 import {Delegate, Delegation} from "../../src/puzzles/6/Delegate.sol";
+import {DelegateSolution} from "../../script/6/DelegateSolution.s.sol";
 
 contract DelegateTest is Test {
     Delegate internal delegateContract;
     Delegation internal puzzleContract;
 
     address owner = makeAddr("owner");
-    address player = makeAddr("player");
+    address player = msg.sender;
 
     function setUp() public {
         vm.startPrank(owner);
@@ -27,4 +28,9 @@ contract DelegateTest is Test {
         vm.stopPrank();
     }
 
+    function testDelegateSolution() public {
+        DelegateSolution solution = new DelegateSolution();
+        solution.run(payable(address(puzzleContract)));
+        assertEq(puzzleContract.owner(), player);
+    }
 }

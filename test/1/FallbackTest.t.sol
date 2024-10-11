@@ -8,7 +8,6 @@ import {FallbackSolution} from "../../script/1/FallbackSolution.s.sol";
 
 contract FallbackTest is Test {
     Fallback internal puzzleContract;
-    FallbackSolution internal solution;
 
     address owner = makeAddr("owner");
     address player = msg.sender;
@@ -21,8 +20,6 @@ contract FallbackTest is Test {
         vm.stopPrank();
 
         vm.deal(player, STARTING_USER_BALANCE);
-
-        solution = new FallbackSolution();
     }
 
     function testSolveFallback() public {
@@ -37,6 +34,7 @@ contract FallbackTest is Test {
     }
 
     function testFallbackSolution() public {
+        FallbackSolution solution = new FallbackSolution();
         solution.run(payable(address(puzzleContract)));
         assertEq(puzzleContract.owner(), player);
         assertEq(address(puzzleContract).balance, 0);
