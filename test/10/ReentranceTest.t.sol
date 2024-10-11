@@ -11,7 +11,7 @@ import {DeployReentrancyAttacker} from "../../script/10/DeployReentrancyAttacker
 
 contract ReentranceTest is Test {
     Reentrance internal puzzleContract;
-    ReentrancyAttacker internal attackerContract;
+    ReentrancyAttacker internal attacker;
 
     address owner = makeAddr("owner");
     address player = msg.sender;
@@ -28,25 +28,22 @@ contract ReentranceTest is Test {
         puzzleContract.donate{value: STARTING_CONTRACT_BALANCE}(owner);
         vm.stopPrank();
 
-        vm.startPrank(player);
-        attackerContract = new ReentrancyAttacker(address(puzzleContract));
-        vm.stopPrank();
+        attacker = new DeployReentrancyAttacker().run(address(puzzleContract));
     }
 
     function testSolveReentrance() public {
         console.log("Puzzle contract balance: ", address(puzzleContract).balance);
         assertEq(address(puzzleContract).balance, STARTING_CONTRACT_BALANCE);
         vm.startPrank(player);
-        attackerContract.attack{value: 1e17}();
+        attacker.attack{value: 1e17}();
         assertEq(address(puzzleContract).balance, 0);
         console.log("Puzzle contract balance: ", address(puzzleContract).balance);
-        attackerContract.withdraw();
+        attacker.withdraw();
         assertEq(player.balance, STARTING_USER_BALANCE + STARTING_CONTRACT_BALANCE);
         vm.stopPrank();
     }
 
     function testReentrancySolution() public {
-        ReentrancyAttacker attacker = new DeployReentrancyAttacker().run(address(puzzleContract));
         ReentrancySolution solution = new ReentrancySolution();
         solution.run(address(attacker));
 

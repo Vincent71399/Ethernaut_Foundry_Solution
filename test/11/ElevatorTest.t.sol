@@ -9,21 +9,20 @@ import {DeployElevatorAttacker} from "../../script/11/DeployElevatorAttacker.s.s
 
 contract ElevatorTest is Test {
     Elevator internal puzzleContract;
-    ElevatorAttacker internal attackerContract;
+    ElevatorAttacker internal attacker;
 
     function setUp() public {
         puzzleContract = new Elevator();
-        attackerContract = new ElevatorAttacker(address(puzzleContract));
+        attacker = new DeployElevatorAttacker().run(address(puzzleContract));
     }
 
     function testElevator() public {
         assertEq(puzzleContract.top(), false);
-        attackerContract.attack();
+        attacker.attack();
         assertEq(puzzleContract.top(), true);
     }
 
     function testElevatorSolution() public {
-        ElevatorAttacker attacker = new DeployElevatorAttacker().run(address(puzzleContract));
         ElevatorSolution solution = new ElevatorSolution();
         solution.solve(address(attacker));
         assertEq(puzzleContract.top(), true);

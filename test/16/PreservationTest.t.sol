@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
-import {Test, console} from "forge-std/Test.sol";
+import {Test} from "forge-std/Test.sol";
 import {Preservation, LibraryContract} from "../../src/puzzles/16/Preservation.sol";
 import {PreservationAttacker1, PreservationAttacker2} from "../../src/attackers/16/PreservationAttacker.sol";
 import {PreservationSolution} from "../../script/16/PreservationSolution.s.sol";
@@ -12,8 +12,8 @@ contract PreservationTest is Test {
     Preservation internal puzzleContract;
     LibraryContract internal libraryContract1;
     LibraryContract internal libraryContract2;
-    PreservationAttacker1 internal attackerContract1;
-    PreservationAttacker2 internal attackerContract2;
+    PreservationAttacker1 internal attacker1;
+    PreservationAttacker2 internal attacker2;
 
     address player = makeAddr("player");
 
@@ -21,23 +21,21 @@ contract PreservationTest is Test {
         libraryContract1 = new LibraryContract();
         libraryContract2 = new LibraryContract();
         puzzleContract = new Preservation(address(libraryContract1), address(libraryContract2));
-        attackerContract1 = new PreservationAttacker1();
-        attackerContract2 = new PreservationAttacker2();
+        (attacker1, attacker2) = new DeployPreservationAttacker().run();
     }
 
     function testPreservation() public {
-        puzzleContract.setFirstTime(uint256(uint160(address(attackerContract1))));
-        assertEq(puzzleContract.timeZone1Library(), address(attackerContract1));
-        puzzleContract.setFirstTime(uint256(uint160(address(attackerContract2))));
-        assertEq(puzzleContract.timeZone2Library(), address(attackerContract2));
+        puzzleContract.setFirstTime(uint256(uint160(address(attacker1))));
+        assertEq(puzzleContract.timeZone1Library(), address(attacker1));
+        puzzleContract.setFirstTime(uint256(uint160(address(attacker2))));
+        assertEq(puzzleContract.timeZone2Library(), address(attacker2));
         puzzleContract.setSecondTime(uint256(uint160(player)));
         assertEq(puzzleContract.owner(), player);
     }
 
     function testPreservationSolution() public {
-        (PreservationAttacker1 attacker1, PreservationAttacker2 attacker2) = new DeployPreservationAttacker().run();
         PreservationSolution solution = new PreservationSolution();
-        solution.solve(address(puzzleContract), address(attackerContract1), address(attackerContract2), player);
+        solution.solve(address(puzzleContract), address(attacker1), address(attacker2), player);
         assertEq(puzzleContract.owner(), player);
     }
 }

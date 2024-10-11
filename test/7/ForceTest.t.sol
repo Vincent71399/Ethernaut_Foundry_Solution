@@ -9,23 +9,22 @@ import {DeployForceAttacker} from "../../script/7/DeployForceAttacker.s.sol";
 
 contract ForceTest is Test {
     Force internal puzzleContract;
-    ForceAttacker internal attackerContract;
+    ForceAttacker internal attacker;
 
     uint256 constant VALUE_TO_SEND = 1;
 
     function setUp() public {
         puzzleContract = new Force();
-        attackerContract = new ForceAttacker();
+        attacker = new DeployForceAttacker().run();
     }
 
     function testForce() public {
         assertEq(address(puzzleContract).balance, 0);
-        attackerContract.attack{value: VALUE_TO_SEND}(address(puzzleContract));
+        attacker.attack{value: VALUE_TO_SEND}(address(puzzleContract));
         assertEq(address(puzzleContract).balance, VALUE_TO_SEND);
     }
 
     function testForceSolution() public {
-        ForceAttacker attacker = new DeployForceAttacker().run();
         ForceSolution solution = new ForceSolution();
         solution.solve(address(puzzleContract), address(attacker));
         assertEq(address(puzzleContract).balance, VALUE_TO_SEND);
