@@ -5,12 +5,13 @@ pragma experimental ABIEncoderV2;
 
 import {Test} from "forge-std/Test.sol";
 import {Fallout} from "../../src/puzzles/2/Fallout.sol";
+import {FalloutSolution} from "../../script/2/FalloutSolution.s.sol";
 
 contract FalloutTest is Test {
     Fallout internal puzzleContract;
 
     address owner = makeAddr("owner");
-    address player = makeAddr("player");
+    address player = msg.sender;
 
     function setUp() public {
         vm.startPrank(owner);
@@ -23,5 +24,11 @@ contract FalloutTest is Test {
         puzzleContract.Fal1out();
         assertEq(puzzleContract.owner(), player);
         vm.stopPrank();
+    }
+
+    function testFalloutSolution() public {
+        FalloutSolution solution = new FalloutSolution();
+        solution.run(address(puzzleContract));
+        assertEq(puzzleContract.owner(), player);
     }
 }

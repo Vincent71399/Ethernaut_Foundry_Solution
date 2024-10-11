@@ -3,13 +3,15 @@ pragma solidity ^0.8.0;
 
 import {Test, console} from "forge-std/Test.sol";
 import {Fallback} from "../../src/puzzles/1/Fallback.sol";
+import {FallbackSolution} from "../../script/1/FallbackSolution.s.sol";
 
 
 contract FallbackTest is Test {
     Fallback internal puzzleContract;
+    FallbackSolution internal solution;
 
     address owner = makeAddr("owner");
-    address player = makeAddr("player");
+    address player = msg.sender;
 
     uint256 constant STARTING_USER_BALANCE = 100 ether;
 
@@ -19,6 +21,8 @@ contract FallbackTest is Test {
         vm.stopPrank();
 
         vm.deal(player, STARTING_USER_BALANCE);
+
+        solution = new FallbackSolution();
     }
 
     function testSolveFallback() public {
@@ -30,5 +34,11 @@ contract FallbackTest is Test {
         puzzleContract.withdraw();
         assertEq(address(puzzleContract).balance, 0);
         vm.stopPrank();
+    }
+
+    function testFallbackSolution() public {
+        solution.run(payable(address(puzzleContract)));
+        assertEq(puzzleContract.owner(), player);
+        assertEq(address(puzzleContract).balance, 0);
     }
 }

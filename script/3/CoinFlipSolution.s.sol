@@ -10,7 +10,11 @@ contract CoinFlipSolution is Script {
         address mostRecentlyDeployedCoinFlipAttacker = DevOpsTools.get_most_recent_deployment("CoinFlipAttacker", block.chainid);
         console.log("CoinFlipAttacker address: ");
         console.logAddress(mostRecentlyDeployedCoinFlipAttacker);
-        CoinFlipAttacker coinFlipAttacker = CoinFlipAttacker(mostRecentlyDeployedCoinFlipAttacker);
+        solve(mostRecentlyDeployedCoinFlipAttacker);
+    }
+
+    function solve(address attacker) public {
+        CoinFlipAttacker coinFlipAttacker = CoinFlipAttacker(attacker);
         vm.startBroadcast();
         coinFlipAttacker.cheatGuess();
         vm.stopBroadcast();
