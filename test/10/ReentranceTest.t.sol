@@ -6,13 +6,15 @@ pragma experimental ABIEncoderV2;
 import {Test, console} from "forge-std/Test.sol";
 import {Reentrance} from "../../src/puzzles/10/Reentrance.sol";
 import {ReentrancyAttacker} from "../../src/attackers/10/ReentrancyAttacker.sol";
+import {ReentrancySolution} from "../../script/10/ReentrancySolution.s.sol";
+import {DeployReentrancyAttacker} from "../../script/10/DeployReentrancyAttacker.s.sol";
 
 contract ReentranceTest is Test {
     Reentrance internal puzzleContract;
     ReentrancyAttacker internal attackerContract;
 
     address owner = makeAddr("owner");
-    address player = makeAddr("player");
+    address player = msg.sender;
 
     uint256 constant STARTING_USER_BALANCE = 100 ether;
     uint256 constant STARTING_CONTRACT_BALANCE = 10 ether;
@@ -41,5 +43,14 @@ contract ReentranceTest is Test {
         attackerContract.withdraw();
         assertEq(player.balance, STARTING_USER_BALANCE + STARTING_CONTRACT_BALANCE);
         vm.stopPrank();
+    }
+
+    function testReentrancySolution() public {
+        ReentrancyAttacker attacker = new DeployReentrancyAttacker().run(address(puzzleContract));
+        ReentrancySolution solution = new ReentrancySolution();
+        solution.run(address(attacker));
+
+        assertEq(address(puzzleContract).balance, 0);
+        assertEq(player.balance, STARTING_USER_BALANCE + STARTING_CONTRACT_BALANCE);
     }
 }
