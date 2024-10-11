@@ -5,7 +5,6 @@ import {Test, console} from "forge-std/Test.sol";
 import {Fallback} from "../../src/puzzles/1/Fallback.sol";
 import {FallbackSolution} from "../../script/1/FallbackSolution.s.sol";
 
-
 contract FallbackTest is Test {
     Fallback internal puzzleContract;
 
@@ -25,7 +24,7 @@ contract FallbackTest is Test {
     function testSolveFallback() public {
         vm.startPrank(player);
         puzzleContract.contribute{value: 1}();
-        (bool success, ) = address(puzzleContract).call{value: 1}("");
+        (bool success,) = address(puzzleContract).call{value: 1}("");
         assertEq(success, true);
         assertEq(puzzleContract.owner(), player);
         puzzleContract.withdraw();

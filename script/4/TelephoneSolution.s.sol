@@ -1,13 +1,14 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
-import { Script } from "forge-std/Script.sol";
-import { DevOpsTools } from "foundry-devops/src/DevOpsTools.sol";
-import { TelephoneAttacker } from "../../src/attackers/4/TelephoneAttacker.sol";
+import {Script} from "forge-std/Script.sol";
+import {DevOpsTools} from "foundry-devops/src/DevOpsTools.sol";
+import {TelephoneAttacker} from "../../src/attackers/4/TelephoneAttacker.sol";
 
 contract TelephoneSolution is Script {
     function run() public {
-        address mostRecentlyDeployedTelephoneAttacker = DevOpsTools.get_most_recent_deployment("TelephoneAttacker", block.chainid);
+        address mostRecentlyDeployedTelephoneAttacker =
+            DevOpsTools.get_most_recent_deployment("TelephoneAttacker", block.chainid);
         solve(mostRecentlyDeployedTelephoneAttacker);
     }
 

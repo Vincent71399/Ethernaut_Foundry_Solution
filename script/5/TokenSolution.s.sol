@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.6.0;
 
-import { Script, console } from "forge-std/Script.sol";
-import { Token } from "../../src/puzzles/5/Token.sol";
+import {Script, console} from "forge-std/Script.sol";
+import {Token} from "../../src/puzzles/5/Token.sol";
 
 contract TokenSolution is Script {
     function run(address target) public {

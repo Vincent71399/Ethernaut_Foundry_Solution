@@ -24,7 +24,7 @@ contract CoinFlipTest is Test {
     function testSolveCoinFlip() public {
         vm.startPrank(player);
         CoinFlipAttacker attacker = new CoinFlipAttacker(address(puzzleContract));
-        for(uint i = 0; i < 10; i++) {
+        for (uint256 i = 0; i < 10; i++) {
             attacker.cheatGuess();
             console.log("Win count: ", puzzleContract.consecutiveWins());
             console.log("Block number: ", block.number);
@@ -38,7 +38,7 @@ contract CoinFlipTest is Test {
     function testCoinFlipSolution() public {
         CoinFlipAttacker attacker = new DeployCoinFlipAttacker().run(address(puzzleContract));
         CoinFlipSolution solution = new CoinFlipSolution();
-        for(uint i = 0; i < 10; i++) {
+        for (uint256 i = 0; i < 10; i++) {
             solution.solve(address(attacker));
             uint256 newBlockNumber = block.number + 1;
             vm.roll(newBlockNumber);

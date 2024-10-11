@@ -7,7 +7,8 @@ import {GatekeeperOneAttacker} from "../../src/attackers/13/GatekeeperOneAttacke
 
 contract GateKeeperOneSolution is Script {
     function run() external {
-        address mostRecentlyDeployedGatekeeperOneAttacker = DevOpsTools.get_most_recent_deployment("GatekeeperOneAttacker", block.chainid);
+        address mostRecentlyDeployedGatekeeperOneAttacker =
+            DevOpsTools.get_most_recent_deployment("GatekeeperOneAttacker", block.chainid);
         console.log("GatekeeperOneAttacker address: ");
         console.logAddress(mostRecentlyDeployedGatekeeperOneAttacker);
         GatekeeperOneAttacker attacker = GatekeeperOneAttacker(mostRecentlyDeployedGatekeeperOneAttacker);

@@ -21,7 +21,7 @@ contract GatekeeperOneAttacker {
 
         for (uint256 i = 0; i < GAS_ITERATION; i++) {
             try puzzleContract.enter{gas: BASE_GAS + i}(gateKey) {
-                if(puzzleContract.entrant() == tx.origin) {
+                if (puzzleContract.entrant() == tx.origin) {
                     iteration = i;
                     return;
                 }

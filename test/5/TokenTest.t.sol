@@ -7,7 +7,6 @@ import {Test, console} from "forge-std/Test.sol";
 import {Token} from "../../src/puzzles/5/Token.sol";
 import {TokenSolution} from "../../script/5/TokenSolution.s.sol";
 
-
 contract TokenTest is Test {
     Token internal puzzleContract;
 

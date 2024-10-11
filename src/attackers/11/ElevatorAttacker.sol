@@ -13,7 +13,7 @@ contract ElevatorAttacker is Building {
 
     function isLastFloor(uint256 _floor) external override returns (bool) {
         bool result = false;
-        if(_floor == lastFloor) {
+        if (_floor == lastFloor) {
             result = true;
         }
         lastFloor = _floor;

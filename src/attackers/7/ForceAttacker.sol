@@ -7,7 +7,7 @@ contract ForceAttacker {
     constructor() payable {}
 
     function attack(address target) public payable {
-        if(msg.value == 0){
+        if (msg.value == 0) {
             revert MSG_VALUE_REQUIRED();
         }
         selfdestruct(payable(target));
