@@ -4,6 +4,9 @@ pragma solidity ^0.8.0;
 import {Test, console} from "forge-std/Test.sol";
 import {Preservation, LibraryContract} from "../../src/puzzles/16/Preservation.sol";
 import {PreservationAttacker1, PreservationAttacker2} from "../../src/attackers/16/PreservationAttacker.sol";
+import {PreservationSolution} from "../../script/16/PreservationSolution.s.sol";
+import {DeployPreservationAttacker} from "../../script/16/DeployPreservationAttacker.s.sol";
+import {DeployTelephoneAttacker} from "../../script/4/DeployTelephoneAttacker.s.sol";
 
 contract PreservationTest is Test {
     Preservation internal puzzleContract;
@@ -28,6 +31,13 @@ contract PreservationTest is Test {
         puzzleContract.setFirstTime(uint256(uint160(address(attackerContract2))));
         assertEq(puzzleContract.timeZone2Library(), address(attackerContract2));
         puzzleContract.setSecondTime(uint256(uint160(player)));
+        assertEq(puzzleContract.owner(), player);
+    }
+
+    function testPreservationSolution() public {
+        (PreservationAttacker1 attacker1, PreservationAttacker2 attacker2) = new DeployPreservationAttacker().run();
+        PreservationSolution solution = new PreservationSolution();
+        solution.solve(address(puzzleContract), address(attackerContract1), address(attackerContract2), player);
         assertEq(puzzleContract.owner(), player);
     }
 }
