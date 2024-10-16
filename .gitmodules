@@ -16,3 +16,6 @@
 [submodule "lib/foundry-devops"]
 	path = lib/foundry-devops
 	url = https://github.com/cyfrin/foundry-devops
+[submodule "lib/openzeppelin-contracts@v4.7.3"]
+	path = lib/openzeppelin-contracts@v4.7.3
+	url = https://github.com/openzeppelin/openzeppelin-contracts

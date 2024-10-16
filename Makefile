@@ -6,13 +6,15 @@ setup_wallet :; cast wallet import sepoliaKey --interactive
 list_wallets :; cast wallet list
 
 # install libs
-install_libs : remove_libs install_foundry install_foundry-devops install_openzeppelin@3.3.0 install_openzeppelin
+install_libs : remove_libs install_foundry install_foundry-devops install_openzeppelin install_openzeppelin@3.3.0 install_openzeppelin@4.7.3
 
 remove_libs :; rm -rf lib/*
 
 install_foundry :; forge install foundry-rs/forge-std --no-commit
 
 install_openzeppelin@3.3.0 :; forge install openzeppelin-contracts@v3.3.0=openzeppelin/openzeppelin-contracts@v3.3.0 --no-commit
+
+install_openzeppelin@4.7.3 :; forge install openzeppelin-contracts@v4.7.3=openzeppelin/openzeppelin-contracts@v4.7.3 --no-commit
 
 install_openzeppelin :; forge install openzeppelin-contracts=openzeppelin/openzeppelin-contracts --no-commit
 
@@ -60,11 +62,13 @@ solve_3_consecutive :
 	$(MAKE) delay; \
 	$(MAKE) solve_step_3
 
+solve4: deploy_attacker_4 attack_4
+
 deploy_attacker_4 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_4; \
 	forge script script/4/DeployTelephoneAttacker.s.sol --sig "run(address)" $$puzzle_address_4 ${NETWORK_ARGS}
 
-solve_4 :;
+attack_4 :;
 	forge script script/4/TelephoneSolution.s.sol ${NETWORK_ARGS}
 
 solve_5 :;
