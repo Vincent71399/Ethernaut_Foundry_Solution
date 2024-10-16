@@ -15,7 +15,7 @@ contract PreservationTest is Test {
     PreservationAttacker1 internal attacker1;
     PreservationAttacker2 internal attacker2;
 
-    address player = makeAddr("player");
+    address player = msg.sender;
 
     function setUp() public {
         libraryContract1 = new LibraryContract();
