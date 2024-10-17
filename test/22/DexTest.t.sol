@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import {Test, console} from "forge-std/Test.sol";
+import {Test} from "forge-std/Test.sol";
 import {Dex, SwappableToken} from "../../src/puzzles/22/Dex.sol";
+import {DexSolution} from "../../script/22/DexSolution.s.sol";
 
 contract DexTest is Test {
     Dex internal dex;
@@ -48,8 +49,6 @@ contract DexTest is Test {
         }
         uint256 remainBalance = tokenTo.balanceOf(address(dex));
         uint256 maxSwapAmount = dex.getSwapPrice(address(tokenTo), address(tokenFrom), remainBalance);
-        console.log("Max swap amount: ", maxSwapAmount);
-        console.log("Swap amount: ", swapAmount);
 
         if(swapAmount > maxSwapAmount){
             swapAmount = maxSwapAmount;
@@ -62,34 +61,17 @@ contract DexTest is Test {
     }
 
     function testDex() public {
-        uint counter = 0;
-
         while(token1.balanceOf(address(dex)) > 0 && token2.balanceOf(address(dex)) > 0){
             swapAll();
-            counter++;
-            console.log("Counter: ", counter);
-            console.log("Token1 balance in Dex: ", token1.balanceOf(address(dex)));
-            console.log("Token2 balance in Dex: ", token2.balanceOf(address(dex)));
-            console.log("Token1 balance in player: ", token1.balanceOf(player));
-            console.log("Token2 balance in player: ", token2.balanceOf(player));
-            console.log("--------------------");
         }
+
+        assert(token1.balanceOf(address(dex)) == 0 || token2.balanceOf(address(dex)) == 0);
     }
 
-//    function testDex() public {
-//        assertEq(token1.balanceOf(address(this)), 1000);
-//        assertEq(token2.balanceOf(address(this)), 1000);
-//        dex.addLiquidity(address(token1), 100);
-//        assertEq(token1.balanceOf(address(this)), 900);
-//        assertEq(token1.balanceOf(address(dex)), 100);
-//        dex.addLiquidity(address(token2), 100);
-//        assertEq(token2.balanceOf(address(this)), 900);
-//        assertEq(token2.balanceOf(address(dex)), 100);
-//        dex.swap(address(token1), address(token2), 50);
-//        assertEq(token1.balanceOf(address(this)), 950);
-//        assertEq(token2.balanceOf(address(this)), 950);
-//        dex.approve(address(this), 100);
-//        assertEq(token1.allowance(address(this), address(this)), 100);
-//        assertEq(token2.allowance(address(this), address(this)), 100);
-//    }
+    function testDexSolution() public {
+        DexSolution solution = new DexSolution();
+        solution.solve(address(dex), player);
+
+        assert(token1.balanceOf(address(dex)) == 0 || token2.balanceOf(address(dex)) == 0);
+    }
 }
