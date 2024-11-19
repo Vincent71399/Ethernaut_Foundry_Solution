@@ -42,6 +42,7 @@ solve_14 : attack_14
 solve_15 : attack_15
 solve_16 : deploy_attacker_16 attack_16
 solve_17 : install_jq attack_17
+solve_21 : deploy_attacker_21 attack_21
 solve_22 : attack_22
 solve_23 : deploy_attacker_23 attack_23
 
@@ -172,6 +173,13 @@ attack_17 :;
 	contractAddress=$$(echo $$result | jq '.result[1].contractAddress'); \
 	contractAddress=$$(echo $$contractAddress | tr -d '"'); \
 	forge script script/17/RecoverySolution.s.sol --sig "run(address)" $$contractAddress ${NETWORK_ARGS_SENDER}
+
+deploy_attacker_21 :;
+	@read -p "Enter Puzzle address (0x...): " puzzle_address_21; \
+	forge script script/21/DeployShopAttacker.s.sol --sig "run(address)" $$puzzle_address_21 ${NETWORK_ARGS}
+
+attack_21 :;
+	forge script script/21/ShopSolution.s.sol ${NETWORK_ARGS_SENDER}
 
 attack_22 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_22; \
