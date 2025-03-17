@@ -19,3 +19,6 @@
 [submodule "lib/openzeppelin-contracts@v4.7.3"]
 	path = lib/openzeppelin-contracts@v4.7.3
 	url = https://github.com/openzeppelin/openzeppelin-contracts
+[submodule "lib/foundry-huff"]
+	path = lib/foundry-huff
+	url = https://github.com/huff-language/foundry-huff

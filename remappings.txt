@@ -4,3 +4,4 @@ foundry-devops/=lib/foundry-devops/
 @openzeppelin4.7.3/contracts/=lib/openzeppelin-contracts@v4.7.3/contracts/
 @openzeppelin3.3.0/contracts/=lib/openzeppelin-contracts@v3.3.0/contracts/
 @puzzles/=src/puzzles/
+foundry-huff/=lib/foundry-huff/src/

@@ -174,6 +174,18 @@ attack_17 :;
 	contractAddress=$$(echo $$contractAddress | tr -d '"'); \
 	forge script script/17/RecoverySolution.s.sol --sig "run(address)" $$contractAddress ${NETWORK_ARGS_SENDER}
 
+# for puzzle 18
+setup_foundry_huff : install_huff install_foundry_huff install_dos2unix convert_line_endings_unix
+install_huff :; curl -L get.huff.sh | bash
+install_foundry_huff :; forge install huff-language/foundry-huff --no-commit
+install_dos2unix :; sudo apt-get install dos2unix
+convert_line_endings_unix :; find lib/foundry-huff/scripts -type f -name "*.sh" -exec dos2unix {} +
+
+attack_18 :;
+	@read -p "Enter Puzzle address (0x...): " puzzle_address_18; \
+	bytecode=0x$$(huffc src/attackers/18/MagicNumAttacker.huff -b); \
+	forge script script/18/MagicNumSolution.s.sol --sig "run(address,bytes)" $$puzzle_address_18 $$bytecode ${NETWORK_ARGS_SENDER}
+
 deploy_attacker_21 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_21; \
 	forge script script/21/DeployShopAttacker.s.sol --sig "run(address)" $$puzzle_address_21 ${NETWORK_ARGS}
@@ -191,5 +203,7 @@ deploy_attacker_23 :;
 attack_23 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_23; \
 	forge script script/23/DexTwoSolution.s.sol --sig "run(address)" $$puzzle_address_23 ${NETWORK_ARGS_SENDER}
+
+
 
 
