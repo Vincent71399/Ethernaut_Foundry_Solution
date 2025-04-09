@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.20;
 
-import {Test, console} from "forge-std/Test.sol";
+import {Test} from "forge-std/Test.sol";
 import {LegacyDeployer} from "../LegacyDeployer.sol";
 import {IReentrance} from "@puzzles/10/IReentrance.sol";
 import {ReentrancyAttacker} from "../../src/attackers/10/ReentrancyAttacker.sol";
@@ -31,12 +31,10 @@ contract ReentranceTest is Test, LegacyDeployer {
     }
 
     function testSolveReentrance() public {
-        console.log("Puzzle contract balance: ", address(puzzleContract).balance);
         assertEq(address(puzzleContract).balance, STARTING_CONTRACT_BALANCE);
         vm.startPrank(player);
         attacker.attack{value: 1e17}();
         assertEq(address(puzzleContract).balance, 0);
-        console.log("Puzzle contract balance: ", address(puzzleContract).balance);
         attacker.withdraw();
         assertEq(player.balance, STARTING_USER_BALANCE + STARTING_CONTRACT_BALANCE);
         vm.stopPrank();
