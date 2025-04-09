@@ -2,11 +2,17 @@
 pragma solidity ^0.8.20;
 
 import {Script} from "forge-std/Script.sol";
+import {DevOpsTools} from "foundry-devops/src/DevOpsTools.sol";
 import {ReentrancyAttacker} from "../../src/attackers/10/ReentrancyAttacker.sol";
 
 contract ReentrancySolution is Script {
-    //need to manually enter the attacker address, since it is a legacy version contract, Devops cannot be compiled
-    function run(address attacker) public {
+    function run() external {
+        address mostRecentlyDeployedReentrancyAttacker =
+                            DevOpsTools.get_most_recent_deployment("ReentrancyAttacker", block.chainid);
+        solve(mostRecentlyDeployedReentrancyAttacker);
+    }
+
+    function solve(address attacker) public {
         ReentrancyAttacker attackerContract = ReentrancyAttacker(payable(attacker));
         address target = address(attackerContract.puzzleContract());
         uint256 balance = target.balance;

@@ -126,8 +126,7 @@ deploy_attacker_10 :;
 	forge script script/10/DeployReentrancyAttacker.s.sol --sig "run(address)" $$puzzle_address_10 ${NETWORK_ARGS}
 
 attack_10 :;
-	@read -p "Enter Attacker address (0x...): " attacker_address_10; \
-	forge script script/10/ReentrancySolution.s.sol --sig "run(address)" $$attacker_address_10 ${NETWORK_ARGS}
+	forge script script/10/ReentrancySolution.s.sol ${NETWORK_ARGS}
 
 deploy_attacker_11 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_11; \

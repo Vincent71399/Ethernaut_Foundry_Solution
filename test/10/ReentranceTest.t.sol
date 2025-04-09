@@ -44,7 +44,7 @@ contract ReentranceTest is Test, LegacyDeployer {
 
     function testReentrancySolution() public {
         ReentrancySolution solution = new ReentrancySolution();
-        solution.run(address(attacker));
+        solution.solve(address(attacker));
 
         assertEq(address(puzzleContract).balance, 0);
         assertEq(player.balance, STARTING_USER_BALANCE + STARTING_CONTRACT_BALANCE);
