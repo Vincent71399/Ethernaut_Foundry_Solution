@@ -42,6 +42,8 @@ solve_14 : attack_14
 solve_15 : attack_15
 solve_16 : deploy_attacker_16 attack_16
 solve_17 : install_jq attack_17
+solve_18 : setup_foundry_huff install_huff install_foundry_huff install_dos2unix convert_line_endings_unix attack_18
+solve_19 : attack_19
 solve_21 : deploy_attacker_21 attack_21
 solve_22 : attack_22
 solve_23 : deploy_attacker_23 attack_23
@@ -92,7 +94,7 @@ deploy_attacker_4 :;
 	forge script script/4/DeployTelephoneAttacker.s.sol --sig "run(address)" $$puzzle_address_4 ${NETWORK_ARGS}
 
 attack_4 :;
-	forge script script/4/TelephoneSolution.s.sol ${NETWORK_ARGS}
+	forge script script/4/TelephoneSolution.s.sol ${NETWORK_ARGS_SENDER}
 
 attack_5 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_5; \
@@ -184,6 +186,10 @@ attack_18 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_18; \
 	bytecode=0x$$(huffc src/attackers/18/MagicNumAttacker.huff -b); \
 	forge script script/18/MagicNumSolution.s.sol --sig "run(address,bytes)" $$puzzle_address_18 $$bytecode ${NETWORK_ARGS_SENDER}
+
+attack_19 :;
+	@read -p "Enter Puzzle address (0x...): " puzzle_address_19; \
+	forge script script/19/AlienCodexSolution.s.sol --sig "run(address)" $$puzzle_address_19 ${NETWORK_ARGS_SENDER}
 
 deploy_attacker_21 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_21; \
