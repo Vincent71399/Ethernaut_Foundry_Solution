@@ -1,3 +1,5 @@
+**My solutions to the ethernaut challenges in foundry**
+
 1. create an .env file at root with two keys as follows:
    (you will need to acquire this two by enroll in https://www.infura.io/ and https://etherscan.io/)
 ```javascript
