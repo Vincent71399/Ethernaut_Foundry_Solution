@@ -1,12 +1,13 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.20;
 
 import {Script} from "forge-std/Script.sol";
-import {Fallout} from "@puzzles/2/Fallout.sol";
+import {IFallout} from "@puzzles/2/IFallout.sol";
+import {LegacyDeployer} from "test/LegacyDeployer.sol";
 
-contract FalloutSolution is Script {
+contract FalloutSolution is Script, LegacyDeployer {
     function run(address target) public {
-        Fallout puzzleContract = Fallout(target);
+        IFallout puzzleContract = IFallout(target);
 
         vm.startBroadcast();
         puzzleContract.Fal1out();

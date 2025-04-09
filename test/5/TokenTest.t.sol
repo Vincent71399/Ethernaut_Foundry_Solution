@@ -1,14 +1,13 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.6.0;
-// fix for legacy version of test
-pragma experimental ABIEncoderV2;
+pragma solidity ^0.8.20;
 
 import {Test, console} from "forge-std/Test.sol";
-import {Token} from "../../src/puzzles/5/Token.sol";
+import {LegacyDeployer} from "../LegacyDeployer.sol";
+import {IToken} from "@puzzles/5/IToken.sol";
 import {TokenSolution} from "../../script/5/TokenSolution.s.sol";
 
-contract TokenTest is Test {
-    Token internal puzzleContract;
+contract TokenTest is Test, LegacyDeployer {
+    IToken internal puzzleContract;
 
     address player = msg.sender;
     address receiver = makeAddr("receiver");
@@ -17,7 +16,7 @@ contract TokenTest is Test {
 
     function setUp() public {
         vm.startPrank(player);
-        puzzleContract = new Token(INITIAL_SUPPLY);
+        puzzleContract = IToken(_deployPuzzle5(INITIAL_SUPPLY));
         vm.stopPrank();
     }
 

@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.20;
 
 import {Script} from "forge-std/Script.sol";
-import {Token} from "../../src/puzzles/5/Token.sol";
+import {IToken} from "@puzzles/5/IToken.sol";
 
 contract TokenSolution is Script {
     function run(address target) public {
@@ -10,7 +10,7 @@ contract TokenSolution is Script {
     }
 
     function solve(address target, address player) public {
-        Token puzzleContract = Token(target);
+        IToken puzzleContract = IToken(target);
         uint256 balance = puzzleContract.balanceOf(player);
         uint256 overflowValue = balance + 1;
 

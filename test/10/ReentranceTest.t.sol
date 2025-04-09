@@ -1,16 +1,15 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.6.12;
-// fix for legacy version of test
-pragma experimental ABIEncoderV2;
+pragma solidity ^0.8.20;
 
 import {Test, console} from "forge-std/Test.sol";
-import {Reentrance} from "../../src/puzzles/10/Reentrance.sol";
+import {LegacyDeployer} from "../LegacyDeployer.sol";
+import {IReentrance} from "@puzzles/10/IReentrance.sol";
 import {ReentrancyAttacker} from "../../src/attackers/10/ReentrancyAttacker.sol";
 import {ReentrancySolution} from "../../script/10/ReentrancySolution.s.sol";
 import {DeployReentrancyAttacker} from "../../script/10/DeployReentrancyAttacker.s.sol";
 
-contract ReentranceTest is Test {
-    Reentrance internal puzzleContract;
+contract ReentranceTest is Test, LegacyDeployer {
+    IReentrance internal puzzleContract;
     ReentrancyAttacker internal attacker;
 
     address owner = makeAddr("owner");
@@ -24,7 +23,7 @@ contract ReentranceTest is Test {
         vm.deal(player, STARTING_USER_BALANCE);
 
         vm.startPrank(owner);
-        puzzleContract = new Reentrance();
+        puzzleContract = IReentrance(_deployPuzzle10());
         puzzleContract.donate{value: STARTING_CONTRACT_BALANCE}(owner);
         vm.stopPrank();
 
