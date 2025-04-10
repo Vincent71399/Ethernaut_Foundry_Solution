@@ -5,11 +5,9 @@ import {Script} from "forge-std/Script.sol";
 import {MalToken} from "../../src/attackers/23/MalToken.sol";
 
 contract DeployDexTwoAttacker is Script {
-    function run() external returns (MalToken) {
+    function run() external returns (MalToken attacker) {
         vm.startBroadcast();
-        MalToken attacker = new MalToken();
+        attacker = new MalToken();
         vm.stopBroadcast();
-
-        return attacker;
     }
 }

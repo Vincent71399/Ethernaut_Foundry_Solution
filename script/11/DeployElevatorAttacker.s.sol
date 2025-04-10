@@ -5,10 +5,9 @@ import {Script, console} from "forge-std/Script.sol";
 import {ElevatorAttacker} from "../../src/attackers/11/ElevatorAttacker.sol";
 
 contract DeployElevatorAttacker is Script {
-    function run(address target) external returns (ElevatorAttacker) {
+    function run(address target) external returns (ElevatorAttacker attacker) {
         vm.startBroadcast();
-        ElevatorAttacker attacker = new ElevatorAttacker(target);
+        attacker = new ElevatorAttacker(target);
         vm.stopBroadcast();
-        return attacker;
     }
 }

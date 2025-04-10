@@ -5,10 +5,9 @@ import {Script} from "forge-std/Script.sol";
 import {CoinFlipAttacker} from "../../src/attackers/3/CoinFlipAttacker.sol";
 
 contract DeployCoinFlipAttacker is Script {
-    function run(address target) external returns (CoinFlipAttacker) {
+    function run(address target) external returns (CoinFlipAttacker attacker) {
         vm.startBroadcast();
-        CoinFlipAttacker attacker = new CoinFlipAttacker(target);
+        attacker = new CoinFlipAttacker(target);
         vm.stopBroadcast();
-        return attacker;
     }
 }

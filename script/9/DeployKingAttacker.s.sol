@@ -5,10 +5,9 @@ import {Script} from "forge-std/Script.sol";
 import {KingAttacker} from "../../src/attackers/9/KingAttacker.sol";
 
 contract DeployKingAttacker is Script {
-    function run() external returns (KingAttacker) {
+    function run() external returns (KingAttacker attacker) {
         vm.startBroadcast();
-        KingAttacker attacker = new KingAttacker();
+        attacker = new KingAttacker();
         vm.stopBroadcast();
-        return attacker;
     }
 }
