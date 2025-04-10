@@ -12,7 +12,7 @@ remove_libs :; rm -rf lib/*
 
 install_foundry :; forge install foundry-rs/forge-std --no-commit
 
-install_openzeppelin@3.3.0 :; forge install openzeppelin-contracts@v3.4.2=openzeppelin/openzeppelin-contracts@v3.3.0 --no-commit
+install_openzeppelin@3.3.0 :; forge install openzeppelin-contracts@v3.3.0=openzeppelin/openzeppelin-contracts@v3.3.0 --no-commit
 
 install_openzeppelin@4.7.3 :; forge install openzeppelin-contracts@v4.7.3=openzeppelin/openzeppelin-contracts@v4.7.3 --no-commit
 
