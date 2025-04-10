@@ -1,8 +1,8 @@
 forge-std/=lib/forge-std/src/
 foundry-devops/=lib/foundry-devops/
 @openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/
-@openzeppelin4.7.3/contracts/=lib/openzeppelin-contracts@v4.7.3/contracts/
-@openzeppelin3.3.0/contracts/=lib/openzeppelin-contracts@v3.3.0/contracts/
+openzeppelin-contracts-08/=lib/openzeppelin-contracts@v4.7.3/contracts/
+openzeppelin-contracts-06/=lib/openzeppelin-contracts@v3.3.0/contracts/
 @puzzles/=src/puzzles/
 @attackers/=src/attackers/
 @script/=script/

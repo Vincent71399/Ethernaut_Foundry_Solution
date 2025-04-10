@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
-import {ERC20} from "@openzeppelin4.7.3/contracts/token/ERC20/ERC20.sol";
-import {Ownable} from "@openzeppelin4.7.3/contracts/access/Ownable.sol";
+import {ERC20} from "openzeppelin-contracts-08/token/ERC20/ERC20.sol";
+import {Ownable} from "openzeppelin-contracts-08/access/Ownable.sol";
 
 contract MalToken is ERC20, Ownable {
     constructor() ERC20("MalToken", "MT") {}

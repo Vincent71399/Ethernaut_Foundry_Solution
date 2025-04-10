@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import {IERC20} from "@openzeppelin4.7.3/contracts/token/ERC20/IERC20.sol";
-import {ERC20} from "@openzeppelin4.7.3/contracts/token/ERC20/ERC20.sol";
-import {Ownable} from "@openzeppelin4.7.3/contracts/access/Ownable.sol";
+import {IERC20} from "openzeppelin-contracts-08/token/ERC20/IERC20.sol";
+import {ERC20} from "openzeppelin-contracts-08/token/ERC20/ERC20.sol";
+import {Ownable} from "openzeppelin-contracts-08/access/Ownable.sol";
 
 contract DexTwo is Ownable {
     address public token1;
