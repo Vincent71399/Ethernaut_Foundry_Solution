@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import {Script, console} from "forge-std/Script.sol";
-import {Privacy} from "../../src/puzzles/12/Privacy.sol";
+import {Privacy} from "@puzzles/12/Privacy.sol";
 
 contract PrivacySolution is Script {
     function run(address target, bytes32 key32) external {

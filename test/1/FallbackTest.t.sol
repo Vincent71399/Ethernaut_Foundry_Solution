@@ -2,8 +2,8 @@
 pragma solidity ^0.8.0;
 
 import {Test, console} from "forge-std/Test.sol";
-import {Fallback} from "../../src/puzzles/1/Fallback.sol";
-import {FallbackSolution} from "../../script/1/FallbackSolution.s.sol";
+import {Fallback} from "@puzzles/1/Fallback.sol";
+import {FallbackSolution} from "@script/1/FallbackSolution.s.sol";
 
 contract FallbackTest is Test {
     Fallback internal puzzleContract;

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
-import {King} from "../../puzzles/9/King.sol";
+import {King} from "@puzzles/9/King.sol";
 
 contract KingAttacker {
     error MSG_VALUE_LESS_THAN_PRICE();

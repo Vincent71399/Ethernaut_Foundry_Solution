@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import {Test} from "forge-std/Test.sol";
-import {Shop, Buyer} from "../../src/puzzles/21/Shop.sol";
-import {ShopAttacker} from "../../src/attackers/21/ShopAttacker.sol";
-import {ShopSolution} from "../../script/21/ShopSolution.s.sol";
-import {DeployShopAttacker} from "../../script/21/DeployShopAttacker.s.sol";
+import {Shop, Buyer} from "@puzzles/21/Shop.sol";
+import {ShopAttacker} from "@attackers/21/ShopAttacker.sol";
+import {ShopSolution} from "@script/21/ShopSolution.s.sol";
+import {DeployShopAttacker} from "@script/21/DeployShopAttacker.s.sol";
 
 contract ShopTest is Test {
     Shop internal shop;

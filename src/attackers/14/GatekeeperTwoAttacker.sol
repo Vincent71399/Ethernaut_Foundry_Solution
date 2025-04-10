@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
-import {GatekeeperTwo} from "../../puzzles/14/GatekeeperTwo.sol";
+import {GatekeeperTwo} from "@puzzles/14/GatekeeperTwo.sol";
 
 contract GatekeeperTwoAttacker {
     constructor(address target) {

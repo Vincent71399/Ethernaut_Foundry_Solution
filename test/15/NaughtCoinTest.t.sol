@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import {Test, console} from "forge-std/Test.sol";
-import {NaughtCoin} from "../../src/puzzles/15/NaughtCoin.sol";
-import {NaughtCoinSolution} from "../../script/15/NaughtCoinSolution.s.sol";
+import {NaughtCoin} from "@puzzles/15/NaughtCoin.sol";
+import {NaughtCoinSolution} from "@script/15/NaughtCoinSolution.s.sol";
 
 contract NaughtCoinTest is Test {
     NaughtCoin internal puzzleContract;

@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import {Script} from "forge-std/Script.sol";
 import {DevOpsTools} from "foundry-devops/src/DevOpsTools.sol";
-import {GatekeeperOneAttacker} from "../../src/attackers/13/GatekeeperOneAttacker.sol";
+import {GatekeeperOneAttacker} from "@attackers/13/GatekeeperOneAttacker.sol";
 
 contract GateKeeperOneSolution is Script {
     function run() external {

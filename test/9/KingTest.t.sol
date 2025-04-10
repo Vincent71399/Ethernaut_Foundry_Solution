@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import {Test} from "forge-std/Test.sol";
-import {King} from "../../src/puzzles/9/King.sol";
-import {KingAttacker} from "../../src/attackers/9/KingAttacker.sol";
-import {KingSolution} from "../../script/9/KingSolution.s.sol";
-import {DeployKingAttacker} from "../../script/9/DeployKingAttacker.s.sol";
+import {King} from "@puzzles/9/King.sol";
+import {KingAttacker} from "@attackers/9/KingAttacker.sol";
+import {KingSolution} from "@script/9/KingSolution.s.sol";
+import {DeployKingAttacker} from "@script/9/DeployKingAttacker.s.sol";
 
 contract KingTest is Test {
     King internal puzzleContract;

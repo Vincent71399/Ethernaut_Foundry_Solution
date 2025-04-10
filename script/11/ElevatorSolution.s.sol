@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import {Script} from "forge-std/Script.sol";
 import {DevOpsTools} from "foundry-devops/src/DevOpsTools.sol";
-import {ElevatorAttacker} from "../../src/attackers/11/ElevatorAttacker.sol";
+import {ElevatorAttacker} from "@attackers/11/ElevatorAttacker.sol";
 
 contract ElevatorSolution is Script {
     function run() external {

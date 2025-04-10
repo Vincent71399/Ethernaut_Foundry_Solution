@@ -2,9 +2,9 @@
 pragma solidity ^0.8.20;
 
 import {Test} from "forge-std/Test.sol";
-import {MagicNumAttacker} from "../../src/attackers/18/MagicNumAttacker.sol";
-import {MagicNum} from "../../src/puzzles/18/MagicNum.sol";
-import {MagicNumSolution} from "../../script/18/MagicNumSolution.s.sol";
+import {MagicNumAttacker} from "@attackers/18/MagicNumAttacker.sol";
+import {MagicNum} from "@puzzles/18/MagicNum.sol";
+import {MagicNumSolution} from "@script/18/MagicNumSolution.s.sol";
 import {HuffDeployer} from "foundry-huff/HuffDeployer.sol";
 
 contract MagicNumTest is Test {
@@ -19,7 +19,7 @@ contract MagicNumTest is Test {
         magicNum.setSolver(address(attacker));
     }
 
-    function testMagicNum() public {
+    function testMagicNum() public view {
         assertEq(attacker.whatIsTheMeaningOfLife(), 42);
     }
 

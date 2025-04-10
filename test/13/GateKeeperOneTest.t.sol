@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import {Test} from "forge-std/Test.sol";
-import {GatekeeperOneAttacker} from "../../src/attackers/13/GatekeeperOneAttacker.sol";
-import {GatekeeperOne} from "../../src/puzzles/13/GatekeeperOne.sol";
-import {GateKeeperOneSolution} from "../../script/13/GateKeeperOneSolution.s.sol";
-import {DeployGateKeeperOneAttacker} from "../../script/13/DeployGateKeeperOneAttacker.s.sol";
+import {GatekeeperOneAttacker} from "@attackers/13/GatekeeperOneAttacker.sol";
+import {GatekeeperOne} from "@puzzles/13/GatekeeperOne.sol";
+import {GateKeeperOneSolution} from "@script/13/GateKeeperOneSolution.s.sol";
+import {DeployGateKeeperOneAttacker} from "@script/13/DeployGateKeeperOneAttacker.s.sol";
 
 contract GateKeeperOneTest is Test {
     GatekeeperOne internal puzzleContract;

@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import {Script} from "forge-std/Script.sol";
-import {Dex, SwappableToken} from "../../src/puzzles/22/Dex.sol";
+import {Dex, SwappableToken} from "@puzzles/22/Dex.sol";
 
 contract DexSolution is Script {
     function run(address target) external {

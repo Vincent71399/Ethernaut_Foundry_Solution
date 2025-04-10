@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import {Script, console} from "forge-std/Script.sol";
-import {NaughtCoin} from "../../src/puzzles/15/NaughtCoin.sol";
+import {NaughtCoin} from "@puzzles/15/NaughtCoin.sol";
 
 contract NaughtCoinSolution is Script {
     function run(address target) external {

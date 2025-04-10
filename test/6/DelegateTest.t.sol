@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import {Test, console} from "forge-std/Test.sol";
-import {Delegate, Delegation} from "../../src/puzzles/6/Delegate.sol";
-import {DelegateSolution} from "../../script/6/DelegateSolution.s.sol";
+import {Delegate, Delegation} from "@puzzles/6/Delegate.sol";
+import {DelegateSolution} from "@script/6/DelegateSolution.s.sol";
 
 contract DelegateTest is Test {
     Delegate internal delegateContract;

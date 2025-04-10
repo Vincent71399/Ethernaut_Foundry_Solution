@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import {Test} from "forge-std/Test.sol";
-import {Preservation, LibraryContract} from "../../src/puzzles/16/Preservation.sol";
-import {PreservationAttacker1, PreservationAttacker2} from "../../src/attackers/16/PreservationAttacker.sol";
-import {PreservationSolution} from "../../script/16/PreservationSolution.s.sol";
-import {DeployPreservationAttacker} from "../../script/16/DeployPreservationAttacker.s.sol";
-import {DeployTelephoneAttacker} from "../../script/4/DeployTelephoneAttacker.s.sol";
+import {Preservation, LibraryContract} from "@puzzles/16/Preservation.sol";
+import {PreservationAttacker1, PreservationAttacker2} from "@attackers/16/PreservationAttacker.sol";
+import {PreservationSolution} from "@script/16/PreservationSolution.s.sol";
+import {DeployPreservationAttacker} from "@script/16/DeployPreservationAttacker.s.sol";
+import {DeployTelephoneAttacker} from "@script/4/DeployTelephoneAttacker.s.sol";
 
 contract PreservationTest is Test {
     Preservation internal puzzleContract;

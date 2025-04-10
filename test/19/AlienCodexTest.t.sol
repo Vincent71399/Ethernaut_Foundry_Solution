@@ -4,7 +4,7 @@ pragma solidity ^0.8.20;
 import {Test, console} from "forge-std/Test.sol";
 import {LegacyDeployer} from "../LegacyDeployer.sol";
 import {IAlienCodex} from "@puzzles/19/IAlienCodex.sol";
-import {AlienCodexSolution} from "../../script/19/AlienCodexSolution.s.sol";
+import {AlienCodexSolution} from "@script/19/AlienCodexSolution.s.sol";
 
 contract AlienCodexTest is Test, LegacyDeployer {
     IAlienCodex internal puzzleContract;

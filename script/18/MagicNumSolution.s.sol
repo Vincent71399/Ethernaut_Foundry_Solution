@@ -2,8 +2,8 @@
 pragma solidity ^0.8.20;
 
 import {Script, console} from "forge-std/Script.sol";
-import {MagicNum} from "../../src/puzzles/18/MagicNum.sol";
-import {MagicNumAttacker} from "../../src/attackers/18/MagicNumAttacker.sol";
+import {MagicNum} from "@puzzles/18/MagicNum.sol";
+import {MagicNumAttacker} from "@attackers/18/MagicNumAttacker.sol";
 
 contract MagicNumSolution is Script {
     function run(address target, bytes memory bytecode) external {

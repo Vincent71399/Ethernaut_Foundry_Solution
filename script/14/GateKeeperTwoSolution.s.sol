@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import {Script, console} from "forge-std/Script.sol";
-import {GatekeeperTwoAttacker} from "../../src/attackers/14/GatekeeperTwoAttacker.sol";
+import {GatekeeperTwoAttacker} from "@attackers/14/GatekeeperTwoAttacker.sol";
 
 contract GateKeeperTwoSolution is Script {
     function run(address target) external {

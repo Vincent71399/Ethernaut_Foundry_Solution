@@ -4,9 +4,9 @@ pragma solidity ^0.8.20;
 import {Test} from "forge-std/Test.sol";
 import {LegacyDeployer} from "../LegacyDeployer.sol";
 import {IReentrance} from "@puzzles/10/IReentrance.sol";
-import {ReentrancyAttacker} from "../../src/attackers/10/ReentrancyAttacker.sol";
-import {ReentrancySolution} from "../../script/10/ReentrancySolution.s.sol";
-import {DeployReentrancyAttacker} from "../../script/10/DeployReentrancyAttacker.s.sol";
+import {ReentrancyAttacker} from "@attackers/10/ReentrancyAttacker.sol";
+import {ReentrancySolution} from "@script/10/ReentrancySolution.s.sol";
+import {DeployReentrancyAttacker} from "@script/10/DeployReentrancyAttacker.s.sol";
 
 contract ReentranceTest is Test, LegacyDeployer {
     IReentrance internal puzzleContract;

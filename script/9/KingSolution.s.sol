@@ -3,8 +3,8 @@ pragma solidity ^0.8.0;
 
 import {Script} from "forge-std/Script.sol";
 import {DevOpsTools} from "foundry-devops/src/DevOpsTools.sol";
-import {King} from "../../src/puzzles/9/King.sol";
-import {KingAttacker} from "../../src/attackers/9/KingAttacker.sol";
+import {King} from "@puzzles/9/King.sol";
+import {KingAttacker} from "@attackers/9/KingAttacker.sol";
 
 contract KingSolution is Script {
     function run(address target) public {

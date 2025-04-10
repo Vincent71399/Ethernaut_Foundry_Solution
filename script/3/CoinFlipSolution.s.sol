@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import {Script} from "forge-std/Script.sol";
 import {DevOpsTools} from "foundry-devops/src/DevOpsTools.sol";
-import {CoinFlipAttacker} from "../../src/attackers/3/CoinFlipAttacker.sol";
+import {CoinFlipAttacker} from "@attackers/3/CoinFlipAttacker.sol";
 
 contract CoinFlipSolution is Script {
     function run() public {

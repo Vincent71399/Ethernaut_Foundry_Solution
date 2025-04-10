@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import {Test} from "forge-std/Test.sol";
-import {Telephone} from "../../src/puzzles/4/Telephone.sol";
-import {TelephoneAttacker} from "../../src/attackers/4/TelephoneAttacker.sol";
-import {TelephoneSolution} from "../../script/4/TelephoneSolution.s.sol";
-import {DeployTelephoneAttacker} from "../../script/4/DeployTelephoneAttacker.s.sol";
+import {Telephone} from "@puzzles/4/Telephone.sol";
+import {TelephoneAttacker} from "@attackers/4/TelephoneAttacker.sol";
+import {TelephoneSolution} from "@script/4/TelephoneSolution.s.sol";
+import {DeployTelephoneAttacker} from "@script/4/DeployTelephoneAttacker.s.sol";
 
 contract TelephoneTest is Test {
     Telephone internal puzzleContract;

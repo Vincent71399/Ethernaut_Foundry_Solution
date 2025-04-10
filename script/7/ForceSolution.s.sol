@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import {Script} from "forge-std/Script.sol";
 import {DevOpsTools} from "foundry-devops/src/DevOpsTools.sol";
-import {ForceAttacker} from "../../src/attackers/7/ForceAttacker.sol";
+import {ForceAttacker} from "@attackers/7/ForceAttacker.sol";
 
 contract ForceSolution is Script {
     function run(address target) public {

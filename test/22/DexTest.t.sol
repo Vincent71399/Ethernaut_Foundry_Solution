@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import {Test} from "forge-std/Test.sol";
-import {Dex, SwappableToken} from "../../src/puzzles/22/Dex.sol";
-import {DexSolution} from "../../script/22/DexSolution.s.sol";
+import {Dex, SwappableToken} from "@puzzles/22/Dex.sol";
+import {DexSolution} from "@script/22/DexSolution.s.sol";
 
 contract DexTest is Test {
     Dex internal dex;

@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import {Script} from "forge-std/Script.sol";
 import {DevOpsTools} from "foundry-devops/src/DevOpsTools.sol";
-import {TelephoneAttacker} from "../../src/attackers/4/TelephoneAttacker.sol";
+import {TelephoneAttacker} from "@attackers/4/TelephoneAttacker.sol";
 
 contract TelephoneSolution is Script {
     function run() public {

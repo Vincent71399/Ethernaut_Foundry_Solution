@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import {Test} from "forge-std/Test.sol";
-import {Force} from "../../src/puzzles/7/Force.sol";
-import {ForceAttacker} from "../../src/attackers/7/ForceAttacker.sol";
-import {ForceSolution} from "../../script/7/ForceSolution.s.sol";
-import {DeployForceAttacker} from "../../script/7/DeployForceAttacker.s.sol";
+import {Force} from "@puzzles/7/Force.sol";
+import {ForceAttacker} from "@attackers/7/ForceAttacker.sol";
+import {ForceSolution} from "@script/7/ForceSolution.s.sol";
+import {DeployForceAttacker} from "@script/7/DeployForceAttacker.s.sol";
 
 contract ForceTest is Test {
     Force internal puzzleContract;

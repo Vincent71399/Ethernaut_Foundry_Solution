@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import {Script} from "forge-std/Script.sol";
-import {CoinFlipAttacker} from "../../src/attackers/3/CoinFlipAttacker.sol";
+import {CoinFlipAttacker} from "@attackers/3/CoinFlipAttacker.sol";
 
 contract DeployCoinFlipAttacker is Script {
     function run(address target) external returns (CoinFlipAttacker attacker) {

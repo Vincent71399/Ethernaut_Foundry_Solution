@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import {Test} from "forge-std/Test.sol";
-import {CoinFlip} from "../../src/puzzles/3/CoinFlip.sol";
-import {CoinFlipAttacker} from "../../src/attackers/3/CoinFlipAttacker.sol";
-import {CoinFlipSolution} from "../../script/3/CoinFlipSolution.s.sol";
-import {DeployCoinFlipAttacker} from "../../script/3/DeployCoinFlipAttacker.s.sol";
+import {CoinFlip} from "@puzzles/3/CoinFlip.sol";
+import {CoinFlipAttacker} from "@attackers/3/CoinFlipAttacker.sol";
+import {CoinFlipSolution} from "@script/3/CoinFlipSolution.s.sol";
+import {DeployCoinFlipAttacker} from "@script/3/DeployCoinFlipAttacker.s.sol";
 
 contract CoinFlipTest is Test {
     CoinFlip internal puzzleContract;

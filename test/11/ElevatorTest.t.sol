@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import {Test} from "forge-std/Test.sol";
-import {Elevator} from "../../src/puzzles/11/Elevator.sol";
-import {ElevatorAttacker} from "../../src/attackers/11/ElevatorAttacker.sol";
-import {ElevatorSolution} from "../../script/11/ElevatorSolution.s.sol";
-import {DeployElevatorAttacker} from "../../script/11/DeployElevatorAttacker.s.sol";
+import {Elevator} from "@puzzles/11/Elevator.sol";
+import {ElevatorAttacker} from "@attackers/11/ElevatorAttacker.sol";
+import {ElevatorSolution} from "@script/11/ElevatorSolution.s.sol";
+import {DeployElevatorAttacker} from "@script/11/DeployElevatorAttacker.s.sol";
 
 contract ElevatorTest is Test {
     Elevator internal puzzleContract;

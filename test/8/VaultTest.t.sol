@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import {Test, console} from "forge-std/Test.sol";
-import {Vault} from "../../src/puzzles/8/Vault.sol";
-import {VaultSolution} from "../../script/8/VaultSolution.s.sol";
+import {Vault} from "@puzzles/8/Vault.sol";
+import {VaultSolution} from "@script/8/VaultSolution.s.sol";
 
 contract VaultTest is Test {
     Vault internal puzzleContract;

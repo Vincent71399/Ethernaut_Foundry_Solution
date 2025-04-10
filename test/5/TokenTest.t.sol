@@ -4,7 +4,7 @@ pragma solidity ^0.8.20;
 import {Test, console} from "forge-std/Test.sol";
 import {LegacyDeployer} from "../LegacyDeployer.sol";
 import {IToken} from "@puzzles/5/IToken.sol";
-import {TokenSolution} from "../../script/5/TokenSolution.s.sol";
+import {TokenSolution} from "@script/5/TokenSolution.s.sol";
 
 contract TokenTest is Test, LegacyDeployer {
     IToken internal puzzleContract;

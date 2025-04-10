@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
-import {GatekeeperOne} from "../../puzzles/13/GatekeeperOne.sol";
+import {GatekeeperOne} from "@puzzles/13/GatekeeperOne.sol";
 
 contract GatekeeperOneAttacker {
     GatekeeperOne internal puzzleContract;

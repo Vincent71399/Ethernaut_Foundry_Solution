@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import {Script} from "forge-std/Script.sol";
 import {DevOpsTools} from "foundry-devops/src/DevOpsTools.sol";
-import {Preservation} from "../../src/puzzles/16/Preservation.sol";
+import {Preservation} from "@puzzles/16/Preservation.sol";
 
 contract PreservationSolution is Script {
     function run(address target) external {

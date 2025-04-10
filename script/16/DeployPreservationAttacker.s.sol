@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import {Script, console} from "forge-std/Script.sol";
-import {PreservationAttacker1, PreservationAttacker2} from "../../src/attackers/16/PreservationAttacker.sol";
+import {PreservationAttacker1, PreservationAttacker2} from "@attackers/16/PreservationAttacker.sol";
 
 contract DeployPreservationAttacker is Script {
     function run() external returns (PreservationAttacker1 attacker1, PreservationAttacker2 attacker2) {

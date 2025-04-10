@@ -3,8 +3,8 @@ pragma solidity ^0.8.20;
 
 import {Test} from "forge-std/Test.sol";
 import {LegacyDeployer} from "../LegacyDeployer.sol";
-import {IFallout} from "../../src/puzzles/2/IFallout.sol";
-import {FalloutSolution} from "../../script/2/FalloutSolution.s.sol";
+import {IFallout} from "@puzzles/2/IFallout.sol";
+import {FalloutSolution} from "@script/2/FalloutSolution.s.sol";
 
 contract FalloutTest is Test, LegacyDeployer {
     IFallout internal puzzleContract;

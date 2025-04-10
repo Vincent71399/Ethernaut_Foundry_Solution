@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
-import {Elevator, Building} from "../../puzzles/11/Elevator.sol";
+import {Elevator, Building} from "@puzzles/11/Elevator.sol";
 
 contract ElevatorAttacker is Building {
     uint256 public lastFloor = 0;
