@@ -44,6 +44,7 @@ solve_16 : deploy_attacker_16 attack_16
 solve_17 : install_jq attack_17
 solve_18 : setup_foundry_huff install_huff install_foundry_huff install_dos2unix convert_line_endings_unix attack_18
 solve_19 : attack_19
+solve_20 : attack_20
 solve_21 : deploy_attacker_21 attack_21
 solve_22 : attack_22
 solve_23 : deploy_attacker_23 attack_23
@@ -190,6 +191,10 @@ attack_18 :;
 attack_19 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_19; \
 	forge script script/19/AlienCodexSolution.s.sol --sig "run(address)" $$puzzle_address_19 ${NETWORK_ARGS_SENDER}
+
+attack_20 :;
+	@read -p "Enter Puzzle address (0x...): " puzzle_address_20; \
+	forge script script/20/DenialSolution.s.sol --sig "run(address)" $$puzzle_address_20 ${NETWORK_ARGS}
 
 deploy_attacker_21 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_21; \
