@@ -48,6 +48,7 @@ solve_20 : attack_20
 solve_21 : deploy_attacker_21 attack_21
 solve_22 : attack_22
 solve_23 : deploy_attacker_23 attack_23
+solve_24 : attack_24
 
 # solutions steps
 attack_1 :;
@@ -214,6 +215,8 @@ attack_23 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_23; \
 	forge script script/23/DexTwoSolution.s.sol --sig "run(address)" $$puzzle_address_23 ${NETWORK_ARGS_SENDER}
 
-
+attack_24 :;
+	@read -p "Enter Puzzle address (0x...): " puzzle_address_24; \
+	forge script script/24/PuzzleWalletSolution.s.sol --sig "run(address)" $$puzzle_address_24 ${NETWORK_ARGS_SENDER}
 
 
