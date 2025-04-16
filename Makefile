@@ -20,6 +20,7 @@ install_openzeppelin :; forge install openzeppelin-contracts=openzeppelin/openze
 
 install_foundry-devops :; forge install cyfrin/foundry-devops --no-commit
 
+NETWORK_ARGS_READ := --rpc-url $$SEPOLIA_RPC_URL -vvv
 NETWORK_ARGS := --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast -vvv
 NETWORK_ARGS_VERIFY := --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --broadcast --verify -vvv
 NETWORK_ARGS_SENDER := --rpc-url $$SEPOLIA_RPC_URL --account sepoliaKey --sender $$WALLET_PUBLIC_ADDRESS --broadcast -vvv
@@ -49,6 +50,7 @@ solve_21 : deploy_attacker_21 attack_21
 solve_22 : attack_22
 solve_23 : deploy_attacker_23 attack_23
 solve_24 : attack_24
+solve_28 : deploy_attacker_28 attack_28
 
 # solutions steps
 attack_1 :;
@@ -218,5 +220,20 @@ attack_23 :;
 attack_24 :;
 	@read -p "Enter Puzzle address (0x...): " puzzle_address_24; \
 	forge script script/24/PuzzleWalletSolution.s.sol --sig "run(address)" $$puzzle_address_24 ${NETWORK_ARGS_SENDER}
+
+deploy_attacker_28 :;
+	@read -p "Enter Puzzle address (0x...): " puzzle_address_28; \
+	forge script script/28/DeployGatekeeperThreeAttacker.s.sol --sig "run(address)" $$puzzle_address_28 ${NETWORK_ARGS}
+
+attack_28 :;
+	forge script script/28/GatekeeperThreeSolution.s.sol ${NETWORK_ARGS_SENDER}
+
+# for audit
+slither_26 :; slither src/puzzles/26/DoubleEntryPoint.sol
+aderyn_26 :; aderyn  --path-includes src/puzzles/26
+
+read_storage :;
+	@read -p "Enter Contract address (0x...): " contract_address; \
+	cast storage $$contract_address 2 ${NETWORK_ARGS_READ}
 
 
